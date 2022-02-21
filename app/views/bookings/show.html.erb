@@ -1,0 +1,9 @@
+<h1>Welcome to the dark side,<%= @user.name %></h1>
+<p>These are your bookings:</p>
+
+<% @user.bookings.each do |b|%>
+<%= b.name %>
+<%= b.genre %>
+<%= b.description %>
+<%= b.rating %>
+<% end %>

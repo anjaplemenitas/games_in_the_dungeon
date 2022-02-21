@@ -17,10 +17,11 @@ class BoardgamesController < ApplicationController
     @boardgame = Boardgame.new(boardgames_params)
     @boardgame.user = @user
     if @boardgame.save
-      redirect_to boardgame_path(@boardgame) notice: "You've successfully added your game"
+      redirect_to boardgame_path(@boardgame), notice: "You've successfully added your game"
     else
       render :new
     end
+
   end
 
   private

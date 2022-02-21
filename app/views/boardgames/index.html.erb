@@ -1,1 +1,7 @@
 <h1>Games in the Dungeon</h1>
+
+<ul>
+<% @boardgames.each do |boardgame| %>
+<li><%= boardgame.name %> - <%= boardgame.genre %> - <%= boardgame.description %> - <%= boardgame.rating %></li>
+<% end %>
+</ul>

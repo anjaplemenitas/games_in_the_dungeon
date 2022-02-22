@@ -2,7 +2,12 @@
   <div class="cards">
     <div class="card">
       <div class="img-genre-rating">
+<<<<<<< HEAD
         <%= image_tag(@boardgame.image_url) unless @boardgame.image_url.nil? %>
+=======
+      <%# add cloudinary tag %>
+        <%= image_tag(@boardgame.image_url) %>
+>>>>>>> 759425d78e785e3aeeb46e3c0c0040449515c150
         <div class="card-infos">
           <h2>Genre: <%= @boardgame.genre %></h2>
           <h2>Rating: <%= @boardgame.rating %></h2>
@@ -14,4 +19,11 @@
       </div>
     </div>
   </div>
+</div>
+
+<div class="container boardgame-links">
+  <%= link_to "Back", boardgames_path, class: "btn btn-light" %>
+  <%= simple_form_for [@boardgame, @booking] do |f| %>
+  <%= f.submit "Rent", class: "btn btn-danger" %>
+  <% end %>
 </div>

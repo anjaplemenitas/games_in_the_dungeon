@@ -1,7 +1,16 @@
-<h1>Wecome to your dungeon!</h1>
+<div class="name">
+  <h1>Welcome to your dungeon!</h1>
+</div>
 
-<% @user.boardgames.each do |b| %>
-  <%= f.input :name %>
-  <%= f.input :genre %>
-  <%= f.input :description %>
+<div class="containers col-8">
+  <% @user.boardgames.each do |boardgame| %>
+    <div class="card-product">
+      <img src="https://m.media-amazon.com/images/I/71Yv2+7Gy3S._AC_SL1200_.jpg" />
+      <div class="card-product-infos">
+        <h2><%= boardgame.name %></h2>
+        <p>Genre: <%= boardgame.genre %></p>
+        <p><%= link_to 'See more', boardgame_path(boardgame), class: "btn btn-light" %></p>
+      </div>
+    </div>
   <% end %>
+</div>

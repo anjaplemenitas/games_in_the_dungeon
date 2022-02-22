@@ -1,0 +1,15 @@
+<div class="cards">
+  <div class="card">
+    <div class="img-genre-rating">
+      <%= image_tag(@boardgame.image_url) %>
+      <div class="card-infos">
+        <h2>Genre: <%= @boardgame.genre %></h2>
+        <h2>Rating: <%= @boardgame.rating %></h2>
+      </div>
+    </div>
+    <div class="name-desc">
+    <h2><%= @boardgame.name %></h2>
+    <p><%= @boardgame.description.html_safe %></p>
+    </div>
+  </div>
+</div>

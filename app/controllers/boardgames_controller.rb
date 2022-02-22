@@ -9,11 +9,12 @@ class BoardgamesController < ApplicationController
   end
 
   def new
+    @user = current_user
     @boardgame = Boardgame.new
   end
 
   def create
-    @user = User.find(params[:user_id])
+    @user = current_user
     @boardgame = Boardgame.new(boardgames_params)
     @boardgame.user = @user
     if @boardgame.save
@@ -27,7 +28,7 @@ class BoardgamesController < ApplicationController
   private
 
   def boardgames_params
-    params.require(:boardgames).permit(:name, :genre, :description, :rating, :user_id)
+    params.require(:boardgame).permit(:name, :genre, :description, :rating, :user_id)
   end
 
   def set_boardgame

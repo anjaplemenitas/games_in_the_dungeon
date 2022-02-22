@@ -22,4 +22,5 @@ class Boardgame < ApplicationRecord
        'Worker Placement']
   validates :genre, inclusion: { in: GENRES }
   belongs_to :user
+  has_one_attached :photo
 end

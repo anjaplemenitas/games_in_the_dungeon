@@ -1,3 +1,13 @@
+.containers {
+  margin: auto;
+  margin-top: 30px;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 25px;
+  position: relative;
+  align-items: center;
+}
+
 .name {
   text-align: center;
   color: white;
@@ -6,7 +16,7 @@
 
 .card-product {
   overflow: hidden;
-  height: 120px;
+  height: 180px;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   display: flex;
@@ -15,18 +25,20 @@
 
 .card-product img {
   height: 100%;
-  width: 120px;
+  width: 200px;
   object-fit: cover;
+  padding: 10px;
 }
 
 .card-product h2 {
-  font-size: 16px;
+  font-size: 30px;
   font-weight: bold;
-  margin: 0;
+  margin-bottom: 65px;
+  margin-top: 12px;
 }
 
 .card-product p {
-  font-size: 12px;
+  font-size: 15px;
   line-height: 1.4;
   opacity: .7;
   margin-bottom: 0;
@@ -35,4 +47,11 @@
 
 .card-product .card-product-infos {
   padding: 16px;
+  padding-left: 30px;
+
+  a {
+    position: absolute;
+    right: 25px;
+    top: 120px;
+  }
 }

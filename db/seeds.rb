@@ -26,8 +26,8 @@ require "nokogiri"
 
 ## Boardgame seed
 
-# open_url = URI.open("https://boardgamegeek.com/browse/boardgame")
-# noko_url = Nokogiri::HTML(open_url)
+open_url = URI.open("https://boardgamegeek.com/browse/boardgame")
+noko_url = Nokogiri::HTML(open_url)
 
 # genres = [
 #   'Abstract Strategy',
@@ -55,6 +55,22 @@ require "nokogiri"
 
 # names = noko_url.search('.collection_objectname a').map { |name| name.text.strip}
 # descriptions = noko_url.search('.collection_objectname p').map { |desc| desc.text.strip}
+image_url_page = noko_url.search('.collection_objectname a').map do |element|
+  "https://boardgamegeek.com#{element['href']}"
+end
+
+image_url = []
+
+x = Nokogiri::HTML(URI.open(image_url_page[0]))
+
+y = x.search('.img-responsive img').map
+
+# image_url_page.each do |url|
+#   # puts url
+#   Nokogiri::HTML(URI.open(url)).search('.game-primary')
+# end
+
+# puts image_url
 
 # names.each_with_index do |name, index|
 #   puts "Adding #{name} to the database"

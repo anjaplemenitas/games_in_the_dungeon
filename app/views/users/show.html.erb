@@ -5,11 +5,13 @@
 <div class="containers col-8">
   <% @user.boardgames.each do |boardgame| %>
     <div class="card-product">
-      <img src="https://m.media-amazon.com/images/I/71Yv2+7Gy3S._AC_SL1200_.jpg" />
+      <%= cl_image_tag boardgame.photo.key %>
       <div class="card-product-infos">
         <h2><%= boardgame.name %></h2>
-        <p>Genre: <%= boardgame.genre %></p>
-        <p><%= link_to 'See more', boardgame_path(boardgame), class: "btn btn-light" %></p>
+        <div class="d-flex justify-content-between">
+          <p>Genre: <%= boardgame.genre %></p>
+          <p><%= link_to 'See more', boardgame_path(boardgame), class: "btn btn-light" %></p>
+        </div>
       </div>
     </div>
   <% end %>

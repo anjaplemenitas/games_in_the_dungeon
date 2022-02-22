@@ -1,1 +1,7 @@
-User show page
+<h1>Wecome to your dungeon!</h1>
+
+<% @user.boardgames.each do |b| %>
+  <%= f.input :name %>
+  <%= f.input :genre %>
+  <%= f.input :description %>
+  <% end %>

@@ -1,7 +1,13 @@
-<h1>Wecome to your dungeon!</h1>
+<div class="name">
+  <h1>Welcome to your dungeon!</h1>
+</div>
 
-<% @user.boardgames.each do |b| %>
-  <%= f.input :name %>
-  <%= f.input :genre %>
-  <%= f.input :description %>
-  <% end %>
+<div class="card-product">
+  <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+  <div class="card-product-infos">
+    <% @user.boardgames.each do |b| %>
+    <h2><%= b.name %></h2>
+    <p>Genre: <%= b.genre %></p>
+    <p><%= link_to 'See more', user_path(@user), class: "btn btn-light" %></p>
+  </div>
+</div>

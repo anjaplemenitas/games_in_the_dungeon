@@ -11,17 +11,17 @@ require "json"
 
 ## User seed
 
-25.times do
-  puts "Creating user"
-  user = User.new(
-    { email: "#{('a'..'z').to_a.sample(6).join}@#{('a'..'z').to_a.sample(6).join}.com",
-      password: ('a'..'z').to_a.sample(6).join }
-  )
+# 25.times do
+#   puts "Creating user"
+#   user = User.new(
+#     { email: "#{('a'..'z').to_a.sample(6).join}@#{('a'..'z').to_a.sample(6).join}.com",
+#       password: ('a'..'z').to_a.sample(6).join }
+#   )
 
-  user.save
+#   user.save
 
-  puts "User #{user.id} created"
-end
+#   puts "User #{user.id} created"
+# end
 
 url = "https://api.boardgameatlas.com/api/search?list_id=5yCPKRYJoF&client_id=OShMmavExz"
 
@@ -54,6 +54,9 @@ GENRES = [
 url_json['games'].each do |game|
   puts "Creating #{game['name']}"
 
+  # print `curl #{game['image_url']} > #{game['name'].gsub(" ", "")}.jpg`
+  # x = Cloudinary::Uploader.upload("#{game['name'].gsub(' ', '')}.jpg")["public_id"]
+
   bg = Boardgame.new(
     name: game['name'],
     description: game['description'],
@@ -62,6 +65,8 @@ url_json['games'].each do |game|
     user_id: User.all.sample.id,
     genre: GENRES.sample
   )
+
+  bg.photo.attach(io: URI.open(game['image_url']), filename: "#{game['name'].gsub(' ', '')}.jpg", content_type: 'image/jpg')
 
   if bg.save
     puts "Created #{bg.name}"

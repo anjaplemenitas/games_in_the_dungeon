@@ -2,7 +2,8 @@
   <div class="cards">
     <div class="card">
       <div class="img-genre-rating">
-        <%= image_tag(@boardgame.image_url) unless @boardgame.image_url.nil? %>
+      <%# add cloudinary tag %>
+        <%= cl_image_tag @boardgame.photo.key %>
         <div class="card-infos">
           <h2>Genre: <%= @boardgame.genre %></h2>
           <h2>Rating: <%= @boardgame.rating %></h2>

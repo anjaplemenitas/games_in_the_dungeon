@@ -1,0 +1,40 @@
+.container {
+
+}
+.button-container{
+  display: flex;
+  justify-content: space-between;
+  width: 45vw;
+  .button {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.new-form{
+  display: flex;
+  justify-content: space-between;
+  width: 45vw;
+
+  img {
+    border: 1px solid black;
+    padding-left: 10px;
+    background-color: darkgrey;
+
+  }
+}
+.form {
+  border: 1px solid black;
+  padding-inline: 20px;
+  padding-bottom: 20px;
+  padding-top: 20px;
+  background-color: darkgrey;
+
+}
+
+.user-new {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}

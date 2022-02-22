@@ -9,19 +9,19 @@
 require "open-uri"
 require "json"
 
-## User seed
+# User seed
 
-# 25.times do
-#   puts "Creating user"
-#   user = User.new(
-#     { email: "#{('a'..'z').to_a.sample(6).join}@#{('a'..'z').to_a.sample(6).join}.com",
-#       password: ('a'..'z').to_a.sample(6).join }
-#   )
+25.times do
+  puts "Creating user"
+  user = User.new(
+    { email: "#{('a'..'z').to_a.sample(6).join}@#{('a'..'z').to_a.sample(6).join}.com",
+      password: ('a'..'z').to_a.sample(6).join }
+  )
 
-#   user.save
+  user.save
 
-#   puts "User #{user.id} created"
-# end
+  puts "User #{user.id} created"
+end
 
 url = "https://api.boardgameatlas.com/api/search?list_id=5yCPKRYJoF&client_id=OShMmavExz"
 

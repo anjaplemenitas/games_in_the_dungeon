@@ -4,7 +4,6 @@
   display: grid;
   grid-template-columns: 1fr;
   grid-gap: 25px;
-  position: relative;
   align-items: center;
 }
 
@@ -39,19 +38,12 @@
 
 .card-product p {
   font-size: 15px;
-  line-height: 1.4;
+  line-height: 2.4;
   opacity: .7;
-  margin-bottom: 0;
-  margin-top: 8px;
 }
 
 .card-product .card-product-infos {
   padding: 16px;
   padding-left: 30px;
 
-  a {
-    position: absolute;
-    right: 25px;
-    top: 120px;
-  }
 }

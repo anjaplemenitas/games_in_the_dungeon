@@ -8,21 +8,23 @@ class BookingsController < ApplicationController
   end
 
   def create
-    @booking = Booking.new(booking_params)
-    @user = User.find(params[:user_id])
-    @booking.user = @user
-    @boardgame = Boardgame.new(params[:boardgame_id])
+    @booking = Booking.new
+    @boardgame = Boardgame.find(params[:boardgame_id])
+    @booking.rent = true
+    @booking.user_id = @boardgame.user.id
+    @booking.renter_id = current_user.id
+    @booking.boardgame_id = @boardgame.id
 
-    if @user.save
-      redirect_to boardgame_booking_path(@booking)
+    if @booking.save
+      redirect_to user_path(current_user)
     else
-      render :new
+      render 'boardgames/show'
     end
   end
 
-  private
+  # private
 
-  def booking_params
-    params.require(:booking).permit(:user_id, :booking_id, :buy, :rent)
-  end
+  # def booking_params
+  #   params.require(:booking).permit(:user_id, :buy, :rent)
+  # end
 end

@@ -11,3 +11,8 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+@import "pages/new";
+
+body {
+  background-color: rgb(35, 35, 35);
+}

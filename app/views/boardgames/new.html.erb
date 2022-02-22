@@ -1,0 +1,8 @@
+<%= simple_form_for(@boardgame) do |f| %>
+    <%= f.input :name %>
+    <%= f.input :genre %>
+    <%= f.input :description %>
+    <%= f.submit 'Add game' %>
+<% end %>
+
+<p><%= link_to 'Back', user_path %></p> %>

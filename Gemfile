@@ -33,7 +33,7 @@ gem 'devise'
 
 gem 'pry-byebug'
 gem 'pry-rails'
-gem 'dotenv-rails'
+gem 'dotenv-rails', groups: [:development, :test]
 
 gem 'autoprefixer-rails', '10.2.5'
 gem 'font-awesome-sass'

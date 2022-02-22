@@ -1,8 +1,10 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://i.redd.it/e0deevjvqth71.jpg); height: 60vh; background-size: cover;">
   <div class="container text-center col-6">
     <h1 style="color: white;">Games in the Dungeon</h1>
       <div class="input-group mt-3">
-       <input type="text" class="form-control" aria-label="Recipient's username" aria-describedby="basic-addon2">
+       <input type="text" class="form-control" aria-label="Recipient's username" aria-describedby="basic-addon2" style="width:50px;">
     <div class="input-group-append">
       <button class="btn btn-outline-secondary" type="button">Search</button>
     </div>
@@ -10,19 +12,22 @@
   </div>
 </div>
 
-<div class="container mt-3">
+<div class="container mt-3 mb-3">
   <div class="index-cards">
     <% @boardgames.each do |boardgame| %>
-    <div class="card">
-      <div class="img-genre-rating">
-        <%= image_tag(boardgame.image_url) %>
-      </div>
-        <div class="card-infos">
-          <h3><%= boardgame.name %></h3>
-          <h2>Genre: <%= boardgame.genre %></h2>
-          <h2>Rating: <%= boardgame.rating %></h2>
+    <div class="index-card" style="background-color: white;">
+       <%= cl_image_tag boardgame.photo.key%>
+        <div class="index-card-infos">
+          <h3><%= link_to boardgame.name, boardgame_path(boardgame) %></h3>
+          <br>
+          <h5>Genre: <%= boardgame.genre %></h5>
+          <span class="fa fa-star checked"> <%= boardgame.rating %> </span>
+          <span class="fa fa-star checked"> <%= boardgame.rating %> </span>
+          <span class="fa fa-star checked"> <%= boardgame.rating %> </span>
+          <span class="fa fa-star checked"> <%= boardgame.rating %> </span>
+          <span class="fa fa-star checked"> <%= boardgame.rating %> </span>
         </div>
     </div>
-    <% end %>
+   <% end %>
   </div>
 </div>

@@ -8,13 +8,13 @@
           <%= f.input :genre, collection: Boardgame::GENRES %>
           <%= f.input :description %>
           <%= f.input :photo, as: :file %>
+          <%= f.submit 'Add game', class: "btn btn-light" %>
+        <% end %>
+      <%= link_to 'Back', user_path(@user), class: "btn btn-light" %>
         </div>
   </div>
 
   <div class="button-container">
     <div class="button">
-      <%= f.submit 'Add game', class: "btn btn-light"  %>
-      <%= link_to 'Back', user_path(@user), class: "btn btn-light" %>
     </div>
   </div>
-  <% end %>

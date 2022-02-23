@@ -7,13 +7,8 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 require "open-uri"
-<<<<<<< HEAD
 require "nokogiri"
 require "json"
-=======
-# require "json"
-require "nokogiri"
->>>>>>> ff03bfc08f5eb03be032c22c2be45c085c36218d
 
 # User seed
 GENRES = [
@@ -40,11 +35,25 @@ GENRES = [
   'Worker Placement'
 ]
 
-15.times do
+pre = ['silky', 'smooth', 'ferocious', 'cute', 'flexible', 'mc', 'rough', 'judgy']
+post = ['elf', 'fox', 'wolf', 'dog', 'eel', 'orc', 'halfling', 'dragon', 'kitty']
+a_to_z = ('a'..'z').to_a
+
+['al@boss.com', 'anja@boss.com', 'alex@boss.com'].each do |user|
+  User.create(
+    email: user,
+    username: "#{pre.sample} #{user[0..-10]}",
+    password: 'password'
+  )
+end
+
+
+13.times do
   puts "Creating user"
   user = User.new(
-    { email: "#{('a'..'z').to_a.sample(6).join}@#{('a'..'z').to_a.sample(6).join}.com",
-      password: ('a'..'z').to_a.sample(6).join }
+    email: "#{a_to_z.sample(6).join}@#{a_to_z.sample(6).join}.com",
+    username: "#{pre.sample} #{post.sample}",
+    password: a_to_z.sample(6).join
   )
 
   user.save
@@ -62,6 +71,11 @@ titles = noko.search('.primary').map { |x| x.text.strip }
 description = noko.search('.collection_objectname p').map { |x| x.text.strip }
 images = noko.search('.collection_thumbnail img').map { |x| x['src'] }
 # game_page_url = noko.search('.primary').map { |x| "https://boardgamegeek.com#{x['href']}" }
+
+## boardgamefinder.net
+
+# noko = Nokogiri::HTML(URI.open('https://www.boardgamefinder.net'))
+# titles = noko.search('body > div.wrap-recommend-content.container-fluid > div')
 
 titles.each_with_index do |game, index|
   puts "Creating #{game}"

@@ -7,27 +7,15 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 require "open-uri"
+<<<<<<< HEAD
 require "nokogiri"
 require "json"
+=======
+# require "json"
+require "nokogiri"
+>>>>>>> ff03bfc08f5eb03be032c22c2be45c085c36218d
 
 # User seed
-
-25.times do
-  puts "Creating user"
-  user = User.new(
-    { email: "#{('a'..'z').to_a.sample(6).join}@#{('a'..'z').to_a.sample(6).join}.com",
-      password: ('a'..'z').to_a.sample(6).join }
-  )
-
-  user.save
-
-  puts "User #{user.id} created"
-end
-
-url = "https://api.boardgameatlas.com/api/search?list_id=5yCPKRYJoF&client_id=OShMmavExz"
-
-url_json = JSON.parse(URI.open(url).read)
-
 GENRES = [
   'Abstract Strategy',
   'Action Drafting',
@@ -52,24 +40,47 @@ GENRES = [
   'Worker Placement'
 ]
 
-url_json['games'].each do |game|
-  puts "Creating #{game['name']}"
+15.times do
+  puts "Creating user"
+  user = User.new(
+    { email: "#{('a'..'z').to_a.sample(6).join}@#{('a'..'z').to_a.sample(6).join}.com",
+      password: ('a'..'z').to_a.sample(6).join }
+  )
+
+  user.save
+
+  puts "User #{user.id} created"
+end
+
+# url = "https://api.boardgameatlas.com/api/search?list_id=5yCPKRYJoF&client_id=OShMmavExz"
+
+# url_json = JSON.parse(URI.open(url).read)
+
+noko = Nokogiri::HTML(URI.open("https://boardgamegeek.com/browse/boardgame"))
+
+titles = noko.search('.primary').map { |x| x.text.strip }
+description = noko.search('.collection_objectname p').map { |x| x.text.strip }
+images = noko.search('.collection_thumbnail img').map { |x| x['src'] }
+# game_page_url = noko.search('.primary').map { |x| "https://boardgamegeek.com#{x['href']}" }
+
+titles.each_with_index do |game, index|
+  puts "Creating #{game}"
 
   # print `curl #{game['image_url']} > #{game['name'].gsub(" ", "")}.jpg`
   # x = Cloudinary::Uploader.upload("#{game['name'].gsub(' ', '')}.jpg")["public_id"]
 
   bg = Boardgame.new(
-    name: game['name'],
-    description: game['description'],
-    image_url: game['image_url'],
-    rating: rand(1..10),
+    name: game,
+    description: description[index],
+    image_url: images[index],
+    rating: rand(1..5),
     user_id: User.all.sample.id,
     genre: GENRES.sample
   )
 
   bg.photo.attach(
-    io: URI.open(game['image_url']),
-    filename: "#{game['name'].gsub(' ', '')}.jpg",
+    io: URI.open(images[index]),
+    filename: "#{game.gsub(' ', '')}.jpg",
     content_type: 'image/jpg'
   )
 
@@ -79,3 +90,12 @@ url_json['games'].each do |game|
     puts "Failed"
   end
 end
+
+
+# game_page_url.each do |url|
+#   page_noko = Nokogiri::HTML(URI.open(url))
+#   p x = page_noko.search('.game-header-image')
+#   # puts x
+# end
+
+# https://boardgamegeek.com/boardgame/174430/gloomhaven

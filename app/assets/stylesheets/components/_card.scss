@@ -50,7 +50,7 @@
 
 .index-cards {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-gap: 16px;
   height: 150vh;
 }
@@ -60,15 +60,26 @@
   transition: 0.3s;
   position: relative;
   img {
-    object-fit: contain;
+    object-fit: cover;
+    width: 100%;
     height: 200px;
   }
 }
 
 .index-card-infos {
   padding: 2px 16px;
-}
 
+  a {
+    text-decoration: none;
+    color: black;
+    opacity: 0.5;
+  }
+
+  h5 {
+    font-family: 'Cinzel Decorative', cursive;
+  }
+
+}
 .index-card-infos span {
   position: absolute;
   right: 16px;
@@ -77,4 +88,8 @@
 
 .checked {
   color: orange;
+}
+
+* {
+  border-radius: 5px;
 }

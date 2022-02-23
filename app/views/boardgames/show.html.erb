@@ -13,6 +13,8 @@
       <h2><%= @boardgame.name %></h2>
       <br>
       <p><%= @boardgame.description.html_safe %></p>
+      <br>
+      <h2>This boardgame belongs to <%= User.find(@boardgame.user_id) == current_user.email ? "you" : User.find(@boardgame.user_id).email %></h2>
       </div>
     </div>
   </div>

@@ -1,17 +1,19 @@
 <div class="name">
-  <h1>Welcome to your dungeon!</h1>
+  <h1>Welcome to your dungeon</h1>
 </div>
 
 <div class="containers col-8">
   <% @user.boardgames.each do |boardgame| %>
     <div class="card-product">
-      <%= cl_image_tag boardgame.photo.key %>
-      <div class="card-product-infos">
-        <h2><%= boardgame.name %></h2>
-        <div class="d-flex justify-content-between">
+      <div class="d-flex justify-content-between">
+         <%= cl_image_tag boardgame.photo.key %>
+        <div>
+          <h2><%= boardgame.name %></h2>
           <p>Genre: <%= boardgame.genre %></p>
-          <p><%= link_to 'See more', boardgame_path(boardgame), class: "btn btn-light" %></p>
         </div>
+      </div>
+      <div class="btn_see_more">
+        <p><%= link_to 'See more', boardgame_path(boardgame), class: "btn btn-light" %></p>
       </div>
     </div>
   <% end %>

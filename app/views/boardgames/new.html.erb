@@ -1,20 +1,14 @@
-  <div class="top-name">
-    <h1>Add a game in the dungeon:</h1>
-  </div>
-  <div class="user-new">
-        <div class="form col-7">
-          <%= simple_form_for(@boardgame) do |f| %>
-          <%= f.input :name %>
-          <%= f.input :genre, collection: Boardgame::GENRES %>
-          <%= f.input :description %>
-          <%= f.input :photo, as: :file %>
-        </div>
-  </div>
-
-  <div class="button-container">
-    <div class="button">
-      <%= f.submit 'Add game', class: "btn btn-light" %>
+<div class="top-name">
+  <h1>Add a game in the dungeon</h1>
+</div>
+<div class="user-new">
+  <div class="form col-7">
+    <%= simple_form_for(@boardgame) do |f| %>
+      <%= f.input :name %>
+      <%= f.input :genre, collection: Boardgame::GENRES %>
+      <%= f.input :description %>
+      <%= f.input :photo, as: :file %>
       <%= link_to 'Back', user_path(@user), class: "btn btn-light" %>
-    </div>
+      <%= f.submit 'Add game', class: "btn btn-light" %>
+    <% end %>
   </div>
-  <% end %>

@@ -21,6 +21,9 @@ class Boardgame < ApplicationRecord
        'Wargame',
        'Worker Placement']
   validates :genre, inclusion: { in: GENRES }
+  validates :name, presence: true
+  validates :photo, presence: true
+  validates :description, presence: true
   belongs_to :user
   has_one_attached :photo
 end

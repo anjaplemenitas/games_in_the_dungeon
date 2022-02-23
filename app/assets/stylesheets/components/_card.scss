@@ -52,7 +52,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-gap: 16px;
-  height: 150vh;
+  height: 215vh;
 }
 
 .index-card {
@@ -73,17 +73,28 @@
     text-decoration: none;
     color: black;
     opacity: 0.5;
+    padding-bottom: 20px;
   }
 
   h5 {
     font-family: 'Cinzel Decorative', cursive;
+    position: absolute;
+    left: 16px;
+    bottom: 20px;
+    padding-top: 5px;
+    font-size: 15px;
+  }
+
+  h3 {
+    padding-bottom: 30px;
   }
 
 }
 .index-card-infos span {
   position: absolute;
-  right: 16px;
+  left: 16px;
   bottom: 3px;
+  padding-top: 5px;
 }
 
 .checked {

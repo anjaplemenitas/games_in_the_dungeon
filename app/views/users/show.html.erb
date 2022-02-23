@@ -2,16 +2,34 @@
   <h1>Welcome to your dungeon</h1>
 </div>
 
-<div class="containers col-8">
-  <% @user.boardgames.each do |boardgame| %>
+
+<div class="container col-8">
+  <p>Your rented games</p>
+  <% Booking.where(renter_id: current_user.id).each do |booking| %>
     <div class="card-product">
-      <div class="d-flex justify-content-between">
+    <% boardgame = Boardgame.find(booking.boardgame_id) %>
          <%= cl_image_tag boardgame.photo.key %>
-        <div>
+        <div class="info">
           <h2><%= boardgame.name %></h2>
           <p>Genre: <%= boardgame.genre %></p>
         </div>
+      <div class="btn_see_more">
+        <p><%= link_to 'See more', boardgame_path(boardgame), class: "btn btn-light" %></p>
       </div>
+    </div>
+  <% end %>
+</div>
+
+<div class="container col-8">
+  <p>Your posted games</p>
+  <% @user.boardgames.each do |boardgame| %>
+    <div class="card-product">
+         <%= cl_image_tag boardgame.photo.key %>
+        <div class="info">
+          <h2><%= boardgame.name %></h2>
+          <p>Genre: <%= boardgame.genre %></p>
+        </div>
+
       <div class="btn_see_more">
         <p><%= link_to 'See more', boardgame_path(boardgame), class: "btn btn-light" %></p>
       </div>

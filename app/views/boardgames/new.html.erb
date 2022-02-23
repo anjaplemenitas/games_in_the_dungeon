@@ -13,8 +13,8 @@
 
   <div class="button-container">
     <div class="button">
-      <p><%= f.submit 'Add game', class: "btn btn-light"  %></p>
-      <p><%= link_to 'Back', user_path(@user), class: "btn btn-light" %></p>
+      <%= f.submit 'Add game', class: "btn btn-light" %>
+      <%= link_to 'Back', user_path(@user), class: "btn btn-light" %>
     </div>
   </div>
   <% end %>

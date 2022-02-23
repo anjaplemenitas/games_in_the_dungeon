@@ -7,6 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 require "open-uri"
+require "nokogiri"
 require "json"
 
 # User seed
@@ -66,7 +67,11 @@ url_json['games'].each do |game|
     genre: GENRES.sample
   )
 
-  bg.photo.attach(io: URI.open(game['image_url']), filename: "#{game['name'].gsub(' ', '')}.jpg", content_type: 'image/jpg')
+  bg.photo.attach(
+    io: URI.open(game['image_url']),
+    filename: "#{game['name'].gsub(' ', '')}.jpg",
+    content_type: 'image/jpg'
+  )
 
   if bg.save
     puts "Created #{bg.name}"

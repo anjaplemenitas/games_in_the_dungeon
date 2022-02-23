@@ -67,8 +67,18 @@
 
 .index-card-infos {
   padding: 2px 16px;
-}
 
+  a {
+    text-decoration: none;
+    color: black;
+    opacity: 0.5;
+  }
+
+  h5 {
+    font-family: 'Cinzel Decorative', cursive;
+  }
+
+}
 .index-card-infos span {
   position: absolute;
   right: 16px;
@@ -77,4 +87,8 @@
 
 .checked {
   color: orange;
+}
+
+* {
+  border-radius: 5px;
 }

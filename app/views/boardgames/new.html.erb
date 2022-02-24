@@ -5,8 +5,9 @@
   <div class="form col-7">
     <%= simple_form_for(@boardgame) do |f| %>
       <%= f.input :name %>
-      <%= f.input :genre, collection: Boardgame::GENRES %>
+      <%= f.input :genre, collection: @genre %>
       <%= f.input :description %>
+      <%= f.input :rating %>
       <%= f.input :photo, as: :file %>
       <%= link_to 'Back', user_path(@user), class: "btn btn-light" %>
       <%= f.submit 'Add game', class: "btn btn-light" %>

@@ -11,29 +11,6 @@ require "open-uri"
 require "nokogiri"
 
 # User seed
-GENRES = [
-  'Abstract Strategy',
-  'Action Drafting',
-  'Area Control',
-  'Bluffing',
-  'Card Drafting',
-  'Cooperative',
-  'Deckbuilding',
-  'Dexterity',
-  'Engine Building',
-  'Eurogame',
-  'Legacy',
-  'Miniature',
-  'Party',
-  'Roleplaying',
-  'Roll and Write',
-  'Storytelling',
-  'Tile Placement',
-  'Trading Card',
-  'Trick Taking',
-  'Wargame',
-  'Worker Placement'
-]
 
 pre = ['silky', 'smooth', 'ferocious', 'cute', 'flexible', 'mc', 'rough', 'judgy']
 post = ['elf', 'fox', 'wolf', 'dog', 'eel', 'orc', 'halfling', 'dragon', 'kitty']
@@ -108,8 +85,6 @@ game_id.each do |gid|
   genres << tmp
 end
 
-# p images
-
 puts ""
 puts "Info gathered!"
 
@@ -123,7 +98,7 @@ titles.each_with_index do |game, index|
     image_url: images[index],
     rating: rand(1..5),
     user_id: User.all.sample.id,
-    genre: genres[index],
+    genre: genres[index].join(", "),
     year_published: year_published[index],
     age_rating: age_rating[index],
     min_playtime: min_playtime[index],

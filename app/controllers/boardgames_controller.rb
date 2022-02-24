@@ -12,6 +12,8 @@ class BoardgamesController < ApplicationController
   def new
     @user = current_user
     @boardgame = Boardgame.new
+    @genre = []
+    @genre = Boardgame.all.map(&:genre).join(", ").split(", ").sort.uniq
   end
 
   def create

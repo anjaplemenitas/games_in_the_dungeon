@@ -1,5 +1,5 @@
 class BoardgamesController < ApplicationController
-  before_action :set_boardgame, only: [:show]
+  before_action :set_boardgame, only: %i[show destroy]
 
   def index
     @boardgames = Boardgame.all
@@ -23,7 +23,12 @@ class BoardgamesController < ApplicationController
     else
       render :new
     end
+  end
 
+  def destroy
+    raise
+    @boardgame.destroy
+    redirect_to user_path(@user)
   end
 
   private

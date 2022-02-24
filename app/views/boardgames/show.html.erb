@@ -5,14 +5,25 @@
       <%# add cloudinary tag %>
         <%= cl_image_tag @boardgame.photo.key %>
         <div class="card-infos">
-          <h2>Genre: <%= @boardgame.genre %></h2>
-          <h2>Rating: <%= @boardgame.rating %></h2>
+          <h2><%= @boardgame.age_rating %>+</h2>
+          <h2><%= @boardgame.genre %></h2>
+          <h2><%= @boardgame.min_players %> - <%= @boardgame.max_players %> Players</h2>
+          <h2><%= @boardgame.min_playtime %> mins - <%= @boardgame.max_playtime %> mins</h2>
+          <ul><% 5.times do |x| %>
+            <% if x < @boardgame.rating %>
+              <li class="fa fa-star checked"> </li>
+            <% else %>
+              <li class="fa fa-star"> </li>
+            <% end %>
+          <% end %></ul>
         </div>
       </div>
       <div class="name-desc">
       <h2><%= @boardgame.name %></h2>
       <br>
       <p><%= @boardgame.description.html_safe %></p>
+      <br>
+      <h2>This boardgame belongs to <%= User.find(@boardgame.user_id) == current_user ? "you" : User.find(@boardgame.user_id).username %></h2>
       </div>
     </div>
   </div>

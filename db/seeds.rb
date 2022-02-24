@@ -8,7 +8,6 @@
 
 require "open-uri"
 require "nokogiri"
-require "json"
 
 # User seed
 GENRES = [
@@ -39,14 +38,19 @@ pre = ['silky', 'smooth', 'ferocious', 'cute', 'flexible', 'mc', 'rough', 'judgy
 post = ['elf', 'fox', 'wolf', 'dog', 'eel', 'orc', 'halfling', 'dragon', 'kitty']
 a_to_z = ('a'..'z').to_a
 
+puts "Making the bosses!"
+
 ['al@boss.com', 'anja@boss.com', 'alex@boss.com'].each do |user|
   User.create(
     email: user,
     username: "#{pre.sample} #{user[0..-10]}",
     password: 'password'
   )
+
+  puts "Boss #{user} made!"
 end
 
+puts "---------------------------" * 2
 
 13.times do
   puts "Creating user"
@@ -58,30 +62,53 @@ end
 
   user.save
 
-  puts "User #{user.id} created"
+  puts "User #{user.username} created"
 end
 
-# url = "https://api.boardgameatlas.com/api/search?list_id=5yCPKRYJoF&client_id=OShMmavExz"
-
-# url_json = JSON.parse(URI.open(url).read)
+puts "Users seeded"
+puts "---------------------------" * 2
+puts "Gathering info!"
+puts "---------------------------" * 2
+puts "This will take some time"
+puts "Grab a coffee"
+puts "Maybe a ciggy too"
+puts "Trust me"
+puts "---------------------------" * 2
+puts ""
 
 noko = Nokogiri::HTML(URI.open("https://boardgamegeek.com/browse/boardgame"))
 
 titles = noko.search('.primary').map { |x| x.text.strip }
-description = noko.search('.collection_objectname p').map { |x| x.text.strip }
-images = noko.search('.collection_thumbnail img').map { |x| x['src'] }
-# game_page_url = noko.search('.primary').map { |x| "https://boardgamegeek.com#{x['href']}" }
+# description = noko.search('.collection_objectname p').map { |x| x.text.strip }
+description = []
+year_published = []
+age_rating = []
+min_playtime = []
+max_playtime = []
+min_players = []
+max_players = []
 
-## boardgamefinder.net
+game_id = noko.search('.primary').map { |x| x['href'].match(/.+\/(\d*)\/.+/)[1] }
 
-# noko = Nokogiri::HTML(URI.open('https://www.boardgamefinder.net'))
-# titles = noko.search('body > div.wrap-recommend-content.container-fluid > div')
+images = game_id.map do |gid|
+  noko_xml = Nokogiri::XML(URI.open("https://api.geekdo.com/xmlapi/boardgame/#{gid}?"))
+  print "."
+  noko_xml.css('image').text
+  description << noko_xml.css('description').text
+  year_published << noko_xml.css('yearpublished').text.to_int
+  age_rating << noko_xml.css('age').text.to_int
+  min_playtime << noko_xml.css('minplaytime').text.to_int
+  max_playtime << noko_xml.css('mixplaytime').text.to_int
+  min_players << noko_xml.css('minplayers').text.to_int
+  max_players << noko_xml.css('maxplayers').text.to_int
+end
+
+puts ""
+puts "Info gathered!"
 
 titles.each_with_index do |game, index|
+  puts "---------------------------" * 2
   puts "Creating #{game}"
-
-  # print `curl #{game['image_url']} > #{game['name'].gsub(" ", "")}.jpg`
-  # x = Cloudinary::Uploader.upload("#{game['name'].gsub(' ', '')}.jpg")["public_id"]
 
   bg = Boardgame.new(
     name: game,
@@ -89,7 +116,13 @@ titles.each_with_index do |game, index|
     image_url: images[index],
     rating: rand(1..5),
     user_id: User.all.sample.id,
-    genre: GENRES.sample
+    genre: GENRES.sample,
+    year_published: year_published[index],
+    age_rating: age_rating[index],
+    min_playtime: min_playtime[index],
+    max_playtime: max_playtime[index],
+    min_players: min_players[index],
+    max_players: max_players[index]
   )
 
   bg.photo.attach(
@@ -98,18 +131,9 @@ titles.each_with_index do |game, index|
     content_type: 'image/jpg'
   )
 
-  if bg.save
-    puts "Created #{bg.name}"
-  else
-    puts "Failed"
-  end
+  puts "Created #{bg.name}" if bg.save
 end
 
-
-# game_page_url.each do |url|
-#   page_noko = Nokogiri::HTML(URI.open(url))
-#   p x = page_noko.search('.game-header-image')
-#   # puts x
-# end
-
-# https://boardgamegeek.com/boardgame/174430/gloomhaven
+puts "---------------------------" * 2
+puts "Seeding complete"
+puts "Thank you for being so patient"

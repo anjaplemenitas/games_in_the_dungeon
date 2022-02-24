@@ -1,4 +1,11 @@
 class Boardgame < ApplicationRecord
+  include PgSearch::Model
+  pg_search_scope :search_by_name_and_genre,
+  against: [ :name, :genre ],
+  using: {
+    tsearch: { prefix: true }
+  }
+
   GENRES = ['Abstract Strategy',
        'Action Drafting',
        'Area Control',
@@ -20,6 +27,7 @@ class Boardgame < ApplicationRecord
        'Trick Taking',
        'Wargame',
        'Worker Placement']
+
   validates :genre, inclusion: { in: GENRES }
   validates :name, presence: true
   validates :photo, presence: true

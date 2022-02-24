@@ -2,6 +2,18 @@
   <h1>Welcome to <%= current_user == @user ? "your" : "#{@user.username}s" %> dungeon</h1>
 </div>
 
+<div class="card text-center col-10">
+  <div class="card-header">
+    <p><%= current_user == @user ? "Your" : "#{@user.username}s" %> rented games</p>
+  </div>
+  <div class="card-body">
+
+
+  </div>
+  <div class="card-footer text-muted">
+  </div>
+</div>
+
 
 <div class="container col-8">
   <p><%= current_user == @user ? "Your" : "#{@user.username}s" %> rented games</p>

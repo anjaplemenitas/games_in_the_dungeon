@@ -29,6 +29,9 @@
   </div>
 </div>
 
+<%= simple_form_for [@boardgame, @booking] do |f| %>
+  <%= f.input %>
+
 <div class="container boardgame-links">
   <%= link_to "Back", boardgames_path, class: "btn btn-light" %>
   <%= simple_form_for [@boardgame, @booking] do |f| %>

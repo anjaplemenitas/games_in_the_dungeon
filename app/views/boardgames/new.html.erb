@@ -8,8 +8,14 @@
       <%= f.input :genre, collection: @genre %>
       <%= f.input :description %>
       <%= f.input :rating %>
+      <%= f.input :min_players %>
+      <%= f.input :max_players %>
+      <%= f.input :min_playtime %>
+      <%= f.input :max_playtime %>
+      <%= f.input :age_rating %>
       <%= f.input :photo, as: :file %>
       <%= link_to 'Back', user_path(@user), class: "btn btn-light" %>
       <%= f.submit 'Add game', class: "btn btn-light" %>
     <% end %>
   </div>
+</div>

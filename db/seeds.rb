@@ -91,7 +91,7 @@ max_players = []
 
 game_id = noko.search('.primary').map { |x| x['href'].match(/.+\/(\d*)\/.+/)[1] }
 
-images = game_id.map do |gid|
+game_id.each do |gid|
   noko_xml = Nokogiri::XML(URI.open("https://api.geekdo.com/xmlapi/boardgame/#{gid}?"))
   print "."
   images << noko_xml.css('image').text
@@ -103,6 +103,8 @@ images = game_id.map do |gid|
   min_players << noko_xml.css('minplayers').text.to_i
   max_players << noko_xml.css('maxplayers').text.to_i
 end
+
+# p images
 
 puts ""
 puts "Info gathered!"

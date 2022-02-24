@@ -59,39 +59,48 @@
 .index-card {
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   transition: 0.3s;
-  position: relative;
+
   img {
     object-fit: cover;
     width: 100%;
     height: 200px;
     border-radius: 5px 5px 0 0;
+    margin-bottom: 10px;
   }
 }
 
 .index-card-infos {
-  padding: 2px 16px;
+
+  display: flex;
+  flex-direction: column;
 
   a {
     text-decoration: none;
     color: black;
     opacity: 0.5;
-    padding-bottom: 20px;
+    // padding-bottom: 20px;
   }
 
   h5 {
     font-family: 'Cinzel Decorative', cursive;
     position: absolute;
-    left: 16px;
-    bottom: 20px;
-    padding-top: 5px;
-    font-size: 15px;
+    left: 15px;
+    // bottom: 20px;
+    // font-size: 10px;
   }
 
   h3 {
-    padding-bottom: 30px;
+    // padding-bottom: 30px;
+    // left: 15px;
   }
 
+  .stars-index {
+    // bottom: 10px;
+
+  }
 }
+
+
 .index-card-infos span {
   position: absolute;
   left: 16px;

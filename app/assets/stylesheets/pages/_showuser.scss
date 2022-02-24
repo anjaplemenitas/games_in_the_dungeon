@@ -54,19 +54,48 @@
 
 //NEW FORM
 
-.card {
+.card-user-show {
   display: flex;
   flex-direction: column;
-  padding: 0;
-  // align-items: center;
-}
-.card-header {
-  background-color: rgb(131, 128, 128);
-  p {
-    font-family: 'Cinzel Decorative', cursive;
-    font-size: 18px;
+  margin-top: 5px;
+  width: auto;
+
+
+  .card-header {
+    background-color: rgb(131, 128, 128);
+    p {
+      font-family: 'Cinzel Decorative', cursive;
+      font-size: 18px;
+      margin-bottom: 0;
+    }
+  }
+
+  .card-footer {
+    background-color: rgb(131, 128, 128);
   }
 }
-.card-footer {
-  background-color: rgb(131, 128, 128);
+
+.card-user-show {
+
+  .card-product-infos{
+    display: flex;
+    flex-direction: column;
+    max-height: 180px;
+    align-items: flex-start;
+    padding-left: 200px;
+
+    h2 {
+      padding-top: 10px;
+    }
+  }
+
+  .btn-and-rent {
+    bottom: 5px;
+    right: 15px;
+    gap: 5px;
+
+    p {
+      margin-right: 0;
+    }
+  }
 }

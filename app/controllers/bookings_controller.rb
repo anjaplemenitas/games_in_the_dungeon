@@ -1,19 +1,9 @@
 class BookingsController < ApplicationController
-  def show
-    @booking = Booking.find(params[:id])
-  end
-
-  def new
-    @booking = Booking.new
-  end
-
   def create
-    @booking = Booking.new
+    @booking = Booking.new(booking_params)
     @boardgame = Boardgame.find(params[:boardgame_id])
-    @booking.rent = true
-    @booking.user_id = @boardgame.user.id
-    @booking.renter_id = current_user.id
-    @booking.boardgame_id = @boardgame.id
+
+    set_params
 
     if @booking.save
       redirect_to user_path(current_user)
@@ -22,9 +12,22 @@ class BookingsController < ApplicationController
     end
   end
 
-  # private
+  def destroy
+    @booking = Booking.find(params[:id])
+    raise
+    @booking
+  end
 
-  # def booking_params
-  #   params.require(:booking).permit(:user_id, :buy, :rent)
-  # end
+  private
+
+  def set_params
+    @booking.rent = true
+    @booking.user_id = @boardgame.user.id
+    @booking.renter_id = current_user.id
+    @booking.boardgame_id = @boardgame.id
+  end
+
+  def booking_params
+    params.require(:booking).permit(:user_id, :buy, :rent, :rent_from, :rent_till)
+  end
 end

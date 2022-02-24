@@ -3,12 +3,14 @@
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://i.redd.it/e0deevjvqth71.jpg); height: 60vh; background-size: cover;">
   <div class="container text-center col-6">
     <h1 style="color: white; padding-top: 25%;">Games in the Dungeon</h1>
-      <div class="input-group mt-3">
-       <input type="text" class="form-control" aria-label="Recipient's username" aria-describedby="basic-addon2" style="width:50px;">
-    <div class="input-group-append">
-      <button class="btn btn-outline-secondary" type="button">Search</button>
-    </div>
-      </div>
+    <%= form_tag boardgames_path, method: :get, class: "input-group" do %>
+      <%= text_field_tag :query,
+        params[:query],
+        class: "form-control",
+        placeholder: "Find a Boardgame"
+      %>
+      <%= submit_tag "Search", class: "btn btn-outline-secondary" %>
+    <% end %>
   </div>
 </div>
 

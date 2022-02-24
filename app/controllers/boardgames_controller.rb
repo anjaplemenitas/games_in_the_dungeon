@@ -2,7 +2,11 @@ class BoardgamesController < ApplicationController
   before_action :set_boardgame, only: %i[show destroy]
 
   def index
-    @boardgames = Boardgame.all
+    if params[:query].present?
+      @boardgames = Boardgame.search_by_name_and_genre(params[:query])
+    else
+      @boardgames = Boardgame.all
+    end
   end
 
   def show

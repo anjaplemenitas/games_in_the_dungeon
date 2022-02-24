@@ -3,3 +3,44 @@
   justify-content: space-between;
   width: 45vw;
 }
+
+.card-infos {
+
+  h2 {
+  font-family: 'Biryani', sans-serif;
+  letter-spacing: 2px;
+  padding: 3px;
+}
+}
+
+.name-desc {
+
+  h2 {
+    font-size: 35px;
+    text-align: center;
+  }
+
+  p {
+    font-family: 'Biryani', sans-serif;
+  }
+
+}
+.belongs-to {
+  h1 {
+    font-family: 'Biryani', sans-serif;
+    font-size: 15px;
+    text-align: center;
+  }
+  a {
+
+    text-decoration: none;
+    font-family: 'Biryani', sans-serif;
+    color: rgb(164, 0, 0);
+    font-size: 14px;
+    text-align: center;
+
+    &:hover {
+      color: black;
+    }
+  }
+}

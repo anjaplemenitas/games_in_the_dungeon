@@ -14,10 +14,16 @@
 @import "pages/new";
 @import "pages/_showuser";
 
+
+html {
+  height: 100%;
+  overflow: auto;
+}
 body {
   background-color: rgb(35, 35, 35);
+  min-height: 100%;
+  overflow: auto;
 }
-
 // font
 @import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;900&display=swap');
 

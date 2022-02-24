@@ -7,13 +7,8 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 require "open-uri"
-<<<<<<< HEAD
-require "nokogiri"
-require "json"
-=======
 # require "json"
 require "nokogiri"
->>>>>>> ff03bfc08f5eb03be032c22c2be45c085c36218d
 
 # User seed
 GENRES = [

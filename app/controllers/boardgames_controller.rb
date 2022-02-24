@@ -16,6 +16,8 @@ class BoardgamesController < ApplicationController
   def new
     @user = current_user
     @boardgame = Boardgame.new
+    @genre = []
+    @genre = Boardgame.all.map(&:genre).join(", ").split(", ").sort.uniq
   end
 
   def create
@@ -38,7 +40,17 @@ class BoardgamesController < ApplicationController
   private
 
   def boardgames_params
-    params.require(:boardgame).permit(:name, :genre, :description, :user_id, :photo)
+    params.require(:boardgame).permit(:name,
+                                      :genre,
+                                      :description,
+                                      :user_id,
+                                      :photo,
+                                      :rating,
+                                      :min_players,
+                                      :max_players,
+                                      :min_playtime,
+                                      :max_playtime,
+                                      :age_rating)
   end
 
   def set_boardgame

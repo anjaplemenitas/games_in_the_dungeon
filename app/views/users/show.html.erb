@@ -1,10 +1,10 @@
 <div class="name">
-  <h1>Welcome to your dungeon</h1>
+  <h1>Welcome to <%= current_user == @user ? "your" : "#{@user.username}s" %> dungeon</h1>
 </div>
 
 
 <div class="container col-8">
-  <p>Your rented games</p>
+  <p><%= current_user == @user ? "Your" : "#{@user.username}s" %> rented games</p>
   <% Booking.where(renter_id: current_user.id).each do |booking| %>
     <div class="card-product">
     <% boardgame = Boardgame.find(booking.boardgame_id) %>
@@ -21,7 +21,7 @@
 </div>
 
 <div class="container col-8">
-  <p>Your posted games</p>
+  <p><%= current_user == @user ? "Your" : "#{@user.username}s" %> posted games</p>
   <% @user.boardgames.each do |boardgame| %>
     <div class="card-product">
          <%= cl_image_tag boardgame.photo.key %>

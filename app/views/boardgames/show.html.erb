@@ -23,15 +23,25 @@
       <br>
       <p><%= @boardgame.description.html_safe %></p>
       <br>
-      <h2>This boardgame belongs to <%= User.find(@boardgame.user_id) == current_user ? "you" : User.find(@boardgame.user_id).username %></h2>
+      <h2>This boardgame belongs to
+      <% if User.find(@boardgame.user_id) == current_user %>
+        you</h2>
+      <% else %>
+        <%= link_to "#{User.find(@boardgame.user_id).username}", user_path(User.find(@boardgame.user_id)), html: { style: "text-decoration: none;" } %></h2>
+      <% end %>
       </div>
     </div>
   </div>
 </div>
 
+<div class="container col-6" style="background-color: white; padding: 16px;">
+  <%= simple_form_for [@boardgame, @booking] do |f| %>
+    <%= f.input :rent_from %>
+    <%= f.input :rent_till %>
+    <%= f.submit "Rent", class: "btn btn-danger" %>
+  <% end %>
+</div>
+
 <div class="container boardgame-links">
   <%= link_to "Back", boardgames_path, class: "btn btn-light" %>
-  <%= simple_form_for [@boardgame, @booking] do |f| %>
-  <%= f.submit "Rent", class: "btn btn-danger" %>
-  <% end %>
 </div>

@@ -11,29 +11,6 @@ require "open-uri"
 require "nokogiri"
 
 # User seed
-GENRES = [
-  'Abstract Strategy',
-  'Action Drafting',
-  'Area Control',
-  'Bluffing',
-  'Card Drafting',
-  'Cooperative',
-  'Deckbuilding',
-  'Dexterity',
-  'Engine Building',
-  'Eurogame',
-  'Legacy',
-  'Miniature',
-  'Party',
-  'Roleplaying',
-  'Roll and Write',
-  'Storytelling',
-  'Tile Placement',
-  'Trading Card',
-  'Trick Taking',
-  'Wargame',
-  'Worker Placement'
-]
 
 pre = ['silky', 'smooth', 'ferocious', 'cute', 'flexible', 'mc', 'rough', 'judgy']
 post = ['elf', 'fox', 'wolf', 'dog', 'eel', 'orc', 'halfling', 'dragon', 'kitty']
@@ -89,6 +66,7 @@ min_playtime = []
 max_playtime = []
 min_players = []
 max_players = []
+genres = []
 
 game_id = noko.search('.primary').map { |x| x['href'].match(/.+\/(\d*)\/.+/)[1] }
 
@@ -100,12 +78,12 @@ game_id.each do |gid|
   year_published << noko_xml.css('yearpublished').text.to_i
   age_rating << noko_xml.css('age').text.to_i
   min_playtime << noko_xml.css('minplaytime').text.to_i
-  max_playtime << noko_xml.css('mixplaytime').text.to_i
+  max_playtime << noko_xml.css('maxplaytime').text.to_i
   min_players << noko_xml.css('minplayers').text.to_i
   max_players << noko_xml.css('maxplayers').text.to_i
+  tmp = noko_xml.css('boardgamecategory').map(&:text)
+  genres << tmp
 end
-
-# p images
 
 puts ""
 puts "Info gathered!"
@@ -120,7 +98,7 @@ titles.each_with_index do |game, index|
     image_url: images[index],
     rating: rand(1..5),
     user_id: User.all.sample.id,
-    genre: GENRES.sample,
+    genre: genres[index].join(", "),
     year_published: year_published[index],
     age_rating: age_rating[index],
     min_playtime: min_playtime[index],

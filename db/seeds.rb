@@ -95,12 +95,12 @@ images = game_id.map do |gid|
   print "."
   noko_xml.css('image').text
   description << noko_xml.css('description').text
-  year_published << noko_xml.css('yearpublished').text.to_int
-  age_rating << noko_xml.css('age').text.to_int
-  min_playtime << noko_xml.css('minplaytime').text.to_int
-  max_playtime << noko_xml.css('mixplaytime').text.to_int
-  min_players << noko_xml.css('minplayers').text.to_int
-  max_players << noko_xml.css('maxplayers').text.to_int
+  year_published << noko_xml.css('yearpublished').text.to_i
+  age_rating << noko_xml.css('age').text.to_i
+  min_playtime << noko_xml.css('minplaytime').text.to_i
+  max_playtime << noko_xml.css('mixplaytime').text.to_i
+  min_players << noko_xml.css('minplayers').text.to_i
+  max_players << noko_xml.css('maxplayers').text.to_i
 end
 
 puts ""

@@ -37,13 +37,15 @@
   </div>
 </div>
 
-<div class="container col-6" style="background-color: white; padding: 16px;">
-  <%= simple_form_for [@boardgame, @booking] do |f| %>
-    <%= f.input :rent_from %>
-    <%= f.input :rent_till %>
-    <%= f.submit "Rent", class: "btn btn-danger" %>
-  <% end %>
-</div>
+<% unless current_user == @boardgame.user %>
+  <div class="container col-6" style="background-color: white; padding: 16px;">
+    <%= simple_form_for [@boardgame, @booking] do |f| %>
+      <%= f.input :rent_from %>
+      <%= f.input :rent_till %>
+      <%= f.submit "Rent", class: "btn btn-danger" %>
+    <% end %>
+  </div>
+<% end %>
 
 <div class="container boardgame-links">
   <%= link_to "Back", boardgames_path, class: "btn btn-light" %>

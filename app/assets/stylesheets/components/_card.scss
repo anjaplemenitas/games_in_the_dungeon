@@ -59,8 +59,10 @@
 
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   transition: 0.3s;
-  height: 60vh;
-  max-height: 60vh;
+  // height: 60vh;
+  // max-height: 60vh;
+  min-height: 375px;
+  max-height: 375px;
   border-radius: 5px;
 
   img {

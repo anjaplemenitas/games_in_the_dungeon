@@ -80,6 +80,7 @@ noko = Nokogiri::HTML(URI.open("https://boardgamegeek.com/browse/boardgame"))
 
 titles = noko.search('.primary').map { |x| x.text.strip }
 # description = noko.search('.collection_objectname p').map { |x| x.text.strip }
+images = []
 description = []
 year_published = []
 age_rating = []
@@ -90,10 +91,10 @@ max_players = []
 
 game_id = noko.search('.primary').map { |x| x['href'].match(/.+\/(\d*)\/.+/)[1] }
 
-images = game_id.map do |gid|
+game_id.each do |gid|
   noko_xml = Nokogiri::XML(URI.open("https://api.geekdo.com/xmlapi/boardgame/#{gid}?"))
   print "."
-  noko_xml.css('image').text
+  images << noko_xml.css('image').text
   description << noko_xml.css('description').text
   year_published << noko_xml.css('yearpublished').text.to_i
   age_rating << noko_xml.css('age').text.to_i
@@ -102,6 +103,8 @@ images = game_id.map do |gid|
   min_players << noko_xml.css('minplayers').text.to_i
   max_players << noko_xml.css('maxplayers').text.to_i
 end
+
+# p images
 
 puts ""
 puts "Info gathered!"

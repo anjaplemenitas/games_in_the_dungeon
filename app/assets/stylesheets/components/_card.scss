@@ -53,12 +53,15 @@
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-gap: 16px;
-  height: 215vh;
 }
 
 .index-card {
+
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   transition: 0.3s;
+  height: 60vh;
+  max-height: 60vh;
+  border-radius: 5px;
 
   img {
     object-fit: cover;
@@ -69,49 +72,25 @@
   }
 }
 
-.index-card-infos {
-
-  display: flex;
-  flex-direction: column;
-
-  a {
-    text-decoration: none;
-    color: black;
-    opacity: 0.5;
-    // padding-bottom: 20px;
-  }
-
-  h5 {
-    font-family: 'Cinzel Decorative', cursive;
-    position: absolute;
-    left: 15px;
-    // bottom: 20px;
-    // font-size: 10px;
-  }
-
-  h3 {
-    // padding-bottom: 30px;
-    // left: 15px;
-  }
-
-  .stars-index {
-    // bottom: 10px;
-
-  }
+.game-title {
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 10px;
 }
 
+.game-card-bottom {
 
-.index-card-infos span {
-  position: absolute;
-  left: 16px;
-  bottom: 3px;
-  padding-top: 5px;
+  padding-left: 10px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 5px;
+
+
+  .stars-index {
+    padding-inline-start: 0;
+  }
 }
 
 .checked {
   color: orange;
-}
-
-* {
-  border-radius: 5px;
 }

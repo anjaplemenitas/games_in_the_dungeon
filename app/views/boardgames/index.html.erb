@@ -14,27 +14,30 @@
   </div>
 </div>
 
+
 <div class="container mt-3 mb-3">
   <div class="index-cards">
     <% @boardgames.each do |boardgame| %>
-    <div class="index-card" style="background-color: white;">
-       <%= cl_image_tag boardgame.photo.key%>
-        <div class="index-card-infos">
-          <div>
-            <h3><%= link_to boardgame.name, boardgame_path(boardgame)%></h3>
-          </div>
-          <div>
-            <h5>Genre: <%= boardgame.genre %></h5>
-            <ul class="stars-index"><% 5.times do |x| %>
-              <% if x < boardgame.rating %>
-                <li class="fa fa-star checked"> </li>
-              <% else %>
-                <li class="fa fa-star"> </li>
-              <% end %>
-            <% end %></ul>
+        <div class="index-card" style="background-color: white;">
+          <%= link_to boardgame_path(boardgame) do %>
+            <%= cl_image_tag boardgame.photo.key %>
+          <% end %>
+          <div class="index-card-infos d-flex flex-column justify-content-between" style="height: 175px">
+            <div class="game-title">
+              <h3><%= link_to boardgame.name, boardgame_path(boardgame)%></h3>
+            </div>
+            <div class="game-card-bottom">
+              <h5>Genre: <%= boardgame.genre %></h5>
+              <ul class="stars-index"><% 5.times do |x| %>
+                <% if x < boardgame.rating %>
+                  <li class="fa fa-star checked"> </li>
+                <% else %>
+                  <li class="fa fa-star"> </li>
+                <% end %>
+              <% end %></ul>
+            </div>
           </div>
         </div>
-     </div>
-   <% end %>
+    <% end %>
   </div>
 </div>

@@ -20,17 +20,34 @@ $headers-font: "Nunito", "Helvetica", "sans-serif";
   font-family: 'Cinzel Decorative', cursive;
 }
 
-.index-card-infos h3 {
+.game-title {
 
+  h3 {
   font-family: 'Biryani', sans-serif;
   font-size: 20px;
-
-  a:hover {
-    color: black;
-    transition: 0.3s;
-    opacity: 1;
   }
 
+  a {
+    text-decoration: none;
+    color: black;
+    opacity: 0.5;
+
+    &:hover {
+      color: black;
+      transition: 0.3s;
+      opacity: 1;
+    }
+  }
+}
+
+.game-card-bottom {
+
+  h5 {
+    font-family: 'Biryani', sans-serif;
+    font-size: 12px;
+    opacity: 1;
+    margin: 0;
+  }
 }
 
 .card-infos h2 {

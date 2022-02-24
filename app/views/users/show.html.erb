@@ -31,6 +31,9 @@
         </div>
 
       <div class="btn_see_more">
+        <% if current_user == @user %>
+          <button class="btn btn-danger"><%= link_to "Remove", boardgame_path(boardgame), style: "text-decoration: none; color: black;", method: :delete, data: { confirm: "Are you sure" } %></button>
+        <% end %>
         <p><%= link_to 'See more', boardgame_path(boardgame), class: "btn btn-light" %></p>
       </div>
     </div>

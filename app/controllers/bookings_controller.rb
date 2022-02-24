@@ -13,9 +13,11 @@ class BookingsController < ApplicationController
   end
 
   def destroy
-    @booking = Booking.find(params[:id])
-    raise
-    @booking
+    @booking = Booking.find(params[:boardgame_id])
+    @booking.destroy
+    @user = current_user
+
+    redirect_to user_path(@user), notice: "Booking for #{Boardgame.find(@booking.boardgame_id).name} cancelled"
   end
 
   private

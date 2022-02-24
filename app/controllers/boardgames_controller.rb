@@ -5,7 +5,7 @@ class BoardgamesController < ApplicationController
     if params[:query].present?
       @boardgames = Boardgame.search_by_name_and_genre(params[:query])
     else
-      @boardgames = Boardgame.all
+      @boardgames = Boardgame.all.sort_by(&:created_at).reverse
     end
   end
 
@@ -25,7 +25,7 @@ class BoardgamesController < ApplicationController
     @boardgame = Boardgame.new(boardgames_params)
     @boardgame.user = @user
     if @boardgame.save
-      redirect_to boardgame_path(@boardgame), notice: "You've successfully added your game"
+      redirect_to boardgame_path(@boardgame), notice: "You've added #{boardgame.name} added"
     else
       render :new
     end
@@ -33,7 +33,7 @@ class BoardgamesController < ApplicationController
 
   def destroy
     @boardgame.destroy
-    redirect_to user_path(@user)
+    redirect_to user_path(current_user), notice: "#{@boardgame.name} removed"
   end
 
   private

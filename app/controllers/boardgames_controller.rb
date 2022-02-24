@@ -32,7 +32,6 @@ class BoardgamesController < ApplicationController
   end
 
   def destroy
-    raise
     @boardgame.destroy
     redirect_to user_path(@user)
   end

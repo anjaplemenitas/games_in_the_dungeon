@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   resources :boardgames, only: %i[index show new create destroy] do
-    resources :bookings, only: %i[create destroy]
+    resources :bookings, only: %i[new create destroy]
   end
 
   resources :users, only: %i[show]

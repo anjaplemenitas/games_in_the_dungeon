@@ -38,24 +38,16 @@
 }
 
 .info {
-
-  position: relative;
-  // padding-left: 50px;
+  display: flex;
 
   h2 {
-    position: absolute;
     font-size: 30px;
     font-weight: bold;
-    top: 10px;
-    left: 180px;
   }
   p {
-    position: absolute;
     font-size: 15px;
     line-height: 2.4;
     opacity: .7;
     color: black;
-    top: 80px;
-    left: 180px;
   }
 }

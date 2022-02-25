@@ -39,7 +39,7 @@
   <div class="card-header">
     <p><%= current_user == @user ? "Your" : "#{@user.username}s" %> posted games</p>
   </div>
-  <div class="card-body container col-10">
+  <div class="card-body container col-10" style="margin-bottom: 800px;">
     <% @user.boardgames.each do |boardgame| %>
       <div class="card-product">
         <%= cl_image_tag boardgame.photo.key %>

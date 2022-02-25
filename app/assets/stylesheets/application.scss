@@ -15,12 +15,13 @@
 @import "pages/_showuser";
 
 
+
 html {
   height: 100%;
   overflow: auto;
 }
 body {
-  background-color: rgb(35, 35, 35);
+  background-color: rgba(35, 35, 35, 1);
   min-height: 100%;
   overflow: auto;
 }

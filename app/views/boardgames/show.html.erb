@@ -31,6 +31,7 @@
         <% else %>
           <%= link_to "#{User.find(@boardgame.user_id).username}", user_path(User.find(@boardgame.user_id)), { style: "text-decoration: none;" } %></h2>
         <% end %>
+        </div>
       </div>
     </div>
   </div>

@@ -2,11 +2,44 @@
   <h1>Welcome to <%= current_user == @user ? "your" : "#{@user.username}s" %> dungeon</h1>
 </div>
 
+<div class="card-user-show text-center col-10">
+  <div class="card-header">
+    <p><%= current_user == @user ? "Your" : "#{@user.username}s" %> rented games</p>
+  </div>
+  <div class="card-body">
+
+    <div class="card-product">
+      <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+      <div class="card-product-infos">
+        <h2>Name</h2>
+        <p>genre</p>
+      </div>
+      <%# <div class="card-rent d-flex justify-content-end"> %>
+      <%# </div> %>
+      <div class="btn-and-rent d-flex justify-content-end">
+        <p>rent from</p>
+        <button>cancel</button>
+        <button>see more</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+
+  </div>
+  <div class="card-footer text-muted">
+  </div>
+</div>
+
 
 <div class="container col-8">
-  <p><%= current_user == @user ? "Your" : "#{@user.username}s" %> rented games</p>
+  <%# <p><%= current_user == @user ? "Your" : "#{@user.username}s" %> rented games</p> %>
   <% Booking.where(renter_id: current_user.id).each do |booking| %>
     <div class="container d-flex card-product">
+
       <% boardgame = Boardgame.find(booking.boardgame_id) %>
       <%= cl_image_tag boardgame.photo.key %>
       <div class="info">
@@ -14,7 +47,7 @@
         <p><%= boardgame.genre %></p>
         <p><%= booking.rent_from %> - <%= booking.rent_till %></p>
       </div>
-      <div class="btn_see_more">
+      <div class="btn_see_more d-flex justify-content-end">
         <p><%= link_to "Cancel", boardgame_booking_path(booking), method: :delete, data: { confirm: "Cancel this booking?" }, class: "btn btn-danger" %></p>
         <p><%= link_to 'See more', boardgame_path(boardgame), class: "btn btn-light" %></p>
       </div>

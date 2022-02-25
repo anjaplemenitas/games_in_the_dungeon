@@ -7,12 +7,14 @@
       <%= f.input :name %>
       <%= f.input :genre, collection: @genre %>
       <%= f.input :description %>
-      <%= f.input :rating %>
-      <%= f.input :min_players %>
-      <%= f.input :max_players %>
-      <%= f.input :min_playtime %>
-      <%= f.input :max_playtime %>
-      <%= f.input :age_rating %>
+      <div class="d-flex">
+        <%= f.input :rating, collection: (1..5).to_a, wrapper_html: { style: "    width: 260px;" } %>
+        <%= f.input :min_players, wrapper_html: { style: "margin-left: .25em;" } %>
+        <%= f.input :max_players, wrapper_html: { style: "margin-left: .25em;" } %>
+        <%= f.input :min_playtime, wrapper_html: { style: "margin-left: .25em;" } %>
+        <%= f.input :max_playtime, wrapper_html: { style: "margin-left: .25em;" } %>
+        <%= f.input :age_rating, wrapper_html: { style: "margin-left: .25em;" } %>
+      </div>
       <%= f.input :photo, as: :file %>
       <%= link_to 'Back', user_path(@user), class: "btn btn-light" %>
       <%= f.submit 'Add game', class: "btn btn-light" %>

@@ -5,7 +5,7 @@ class BoardgamesController < ApplicationController
     if params[:query].present?
       @boardgames = Boardgame.search_by_name_and_genre(params[:query])
     else
-      @boardgames = Boardgame.all
+      @boardgames = Boardgame.all.sort_by(&:created_at).reverse
     end
   end
 
@@ -27,6 +27,8 @@ class BoardgamesController < ApplicationController
     if @boardgame.save
       redirect_to boardgame_path(@boardgame), notice: "You've successfully added your game"
     else
+      @genre = []
+      @genre = Boardgame.all.map(&:genre).join(", ").split(", ").sort.uniq
       render :new
     end
   end

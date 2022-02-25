@@ -5,4 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :boardgames
   has_many :bookings
+
+  validates :username, uniqueness: true, presence: true, length: { minimum: 6 }
+  validates :address, presence: true
 end

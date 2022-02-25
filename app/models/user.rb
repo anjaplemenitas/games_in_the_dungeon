@@ -7,4 +7,5 @@ class User < ApplicationRecord
   has_many :bookings
 
   validates :username, uniqueness: true, presence: true, length: { minimum: 6 }
+  validates :address, presence: true
 end

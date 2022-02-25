@@ -6,7 +6,7 @@
 
 .card {
   overflow: hidden;
-  background: white;
+  background-color: #e7e7e7;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   display: flex;
   flex-direction: row;
@@ -60,6 +60,7 @@
 .index-card {
 
   box-shadow: 0 4px 8px 0 rgba(255,255,255,0.3);
+  background-color: #e7e7e7;
   transition: 0.3s;
   max-height: 375px;
   min-height: 375px;

@@ -18,7 +18,7 @@
 .card-product {
   overflow: hidden;
   height: 180px;
-  background: white;
+  background-color: #e1e1e1;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   position: relative;
 }
@@ -31,38 +31,15 @@
   left: 0;
 }
 
-.btn_see_more{
-  bottom: 5px;
-  right: 15px;
-  position: absolute;
-}
-
-.info {
-  display: flex;
-
-  h2 {
-    font-size: 30px;
-    font-weight: bold;
-  }
-  p {
-    font-size: 15px;
-    line-height: 2.4;
-    opacity: .7;
-    color: black;
-  }
-}
-
-//NEW FORM
-
 .card-user-show {
   display: flex;
   flex-direction: column;
-  margin-top: 5px;
+  margin-top: 25px;
+  margin-bottom: 15px;
   width: auto;
 
-
   .card-header {
-    background-color: rgb(131, 128, 128);
+    background-color: #e7e7e7;
     p {
       font-family: 'Cinzel Decorative', cursive;
       font-size: 18px;
@@ -70,9 +47,6 @@
     }
   }
 
-  .card-footer {
-    background-color: rgb(131, 128, 128);
-  }
 }
 
 .card-user-show {
@@ -80,22 +54,41 @@
   .card-product-infos{
     display: flex;
     flex-direction: column;
-    max-height: 180px;
+    height: 128px;
     align-items: flex-start;
-    padding-left: 200px;
+    padding-left: 218px;
 
     h2 {
-      padding-top: 10px;
+      padding-top: 15px;
+      padding-bottom: 5px;
+    }
+    p {
+      color: black;
+      font-size: 13px;
+      font-family: 'Biryani', sans-serif;
+      margin-bottom: 0;
+    }
+    .stars-index {
+      padding-left: 0;
     }
   }
 
-  .btn-and-rent {
-    bottom: 5px;
-    right: 15px;
-    gap: 5px;
+  .bottom-rent {
+
+    display: flex;
+    gap: 325px;
+    padding-left: 218px;
+
+    .btn {
+      display: flex;
+      gap: 8px;
+    }
 
     p {
-      margin-right: 0;
+      color: black;
+      align-self: baseline;
+      font-family: 'Biryani', sans-serif;
+      margin: auto;
     }
   }
 }

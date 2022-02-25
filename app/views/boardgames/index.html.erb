@@ -18,7 +18,7 @@
 <div class="container mt-3 mb-3">
   <div class="index-cards">
     <% @boardgames.each do |boardgame| %>
-        <div class="index-card" style="background-color: white;">
+        <div class="index-card">
           <%= link_to boardgame_path(boardgame) do %>
             <%= cl_image_tag boardgame.photo.key %>
           <% end %>

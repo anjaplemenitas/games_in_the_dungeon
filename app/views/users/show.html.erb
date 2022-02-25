@@ -40,25 +40,24 @@
     <p><%= current_user == @user ? "Your" : "#{@user.username}s" %> posted games</p>
   </div>
   <div class="card-body container col-10">
-    <% Booking.where(renter_id: current_user.id).each do |booking| %>
-    <% boardgame = Boardgame.find(booking.boardgame_id) %>
+    <% @user.boardgames.each do |boardgame| %>
       <div class="card-product">
         <%= cl_image_tag boardgame.photo.key %>
         <div class="card-product-infos">
           <h2><%= boardgame.name %></h2>
           <p>Genre: <%= boardgame.genre %></p>
           <ul class="stars-index"><% 5.times do |x| %>
-                <% if x < boardgame.rating %>
-                  <li class="fa fa-star checked"> </li>
-                <% else %>
-                  <li class="fa fa-star"> </li>
-                <% end %>
-              <% end %></ul>
+            <% if x < boardgame.rating %>
+              <li class="fa fa-star checked"> </li>
+            <% else %>
+              <li class="fa fa-star"> </li>
+            <% end %>
+          <% end %>
+          </ul>
         </div>
         <div class="bottom-rent d-flex justify-content-end">
-          <p>Rented: <%= booking.rent_from %> - <%= booking.rent_till %></p>
           <div class="btn" >
-            <p><%= link_to "Cancel", boardgame_booking_path(booking), method: :delete, data: { confirm: "Cancel this booking?" }, class: "btn btn-warning" %></p>
+            <p><%= link_to "Remove", boardgame_path(boardgame), method: :delete, data: { confirm: "Cancel this booking?" }, class: "btn btn-warning" %></p>
             <p><%= link_to 'See more', boardgame_path(boardgame), class: "btn btn-light" %></p>
           </div>
         </div>

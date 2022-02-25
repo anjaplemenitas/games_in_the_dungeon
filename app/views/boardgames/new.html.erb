@@ -7,7 +7,7 @@
       <%= f.input :name %>
       <%= f.input :genre, collection: @genre %>
       <%= f.input :description %>
-      <div class="d-flex">
+      <div class="d-flex flex-wrap justify-content-between">
         <%= f.input :rating, collection: (1..5).to_a, wrapper_html: { style: "    width: 260px;" } %>
         <%= f.input :min_players, wrapper_html: { style: "margin-left: .25em;" } %>
         <%= f.input :max_players, wrapper_html: { style: "margin-left: .25em;" } %>

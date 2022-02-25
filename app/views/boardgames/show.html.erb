@@ -23,7 +23,7 @@
         <p><%= @boardgame.description.html_safe %></p>
         <br>
         <% if current_user == @boardgame.user %>
-          <button class="btn btn-danger"><%= link_to "Remove #{@boardgame.name}", boardgame_path(@boardgame), style: "text-decoration: none; color: black;", method: :delete, data: { confirm: "Are you sure" } %></button>
+          <button class="btn btn-warning"><%= link_to "Remove #{@boardgame.name}", boardgame_path(@boardgame), style: "text-decoration: none; color: black;", method: :delete, data: { confirm: "Are you sure" } %></button>
         <% end %>
         <div class="belongs-to">
           <h1>This boardgame belongs to: <% if User.find(@boardgame.user_id) == current_user %></h1>

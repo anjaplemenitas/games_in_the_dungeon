@@ -9,6 +9,7 @@
 require "open-uri"
 # require "json"
 require "nokogiri"
+require "faker"
 
 # User seed
 
@@ -22,7 +23,8 @@ puts "Making the bosses!"
   User.create(
     email: user,
     username: "#{pre.sample} #{user[0..-10]}",
-    password: 'password'
+    password: 'password',
+    address: Faker::Address.city
   )
 
   puts "Boss #{user} made!"
@@ -35,7 +37,8 @@ puts "---------------------------" * 2
   user = User.new(
     email: "#{a_to_z.sample(6).join}@#{a_to_z.sample(6).join}.com",
     username: "#{pre.sample} #{post.sample}",
-    password: a_to_z.sample(6).join
+    password: a_to_z.sample(6).join,
+    address: Faker::Address.city
   )
 
   user.save

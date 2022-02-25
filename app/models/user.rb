@@ -6,6 +6,6 @@ class User < ApplicationRecord
   has_many :boardgames
   has_many :bookings
 
-  validates :username, uniqueness: true, presence: true, length: { minimum: 6 }
-  validates :address, presence: true
+  # validates :username, uniqueness: true, presence: true, length: { minimum: 6 }
+  # validates :address, presence: true
 end

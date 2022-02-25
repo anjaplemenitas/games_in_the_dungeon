@@ -5,7 +5,7 @@ class BoardgamesController < ApplicationController
     if params[:query].present?
       @boardgames = Boardgame.search_by_name_and_genre(params[:query])
     else
-      @boardgames = Boardgame.all
+      @boardgames = Boardgame.all.sort_by(&:created_at).reverse
     end
   end
 

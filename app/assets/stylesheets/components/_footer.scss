@@ -1,10 +1,16 @@
 .footer {
-  background: rgba(0,0,0,0.2);
+  background: #252525;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 80px;
+  height: 35px;
   padding: 0px 50px;
+
+  position: fixed;
+  margin-top: 10px;
+  left: 0;
+  bottom: 0;
+  width: 100%;
 }
 .footer-links {
   display: flex;
@@ -17,13 +23,14 @@
   justify-content: center;
   color: white;
   opacity: 1;
+  font-size: 10px;
 }
 
 #anja {
   color: rgb(255, 153, 0);
   opacity: 0.75;
   text-decoration: none;
-  font-size: 24px;
+  font-size: 16px;
   padding: 0px 10px;
 }
 
@@ -31,7 +38,7 @@
   color: rgb(0, 64, 255);
   opacity: 0.75;
   text-decoration: none;
-  font-size: 24px;
+  font-size: 16px;
   padding: 0px 10px;
 }
 
@@ -39,6 +46,6 @@
   color: rgb(0, 255, 153);
   opacity: 0.75;
   text-decoration: none;
-  font-size: 24px;
+  font-size: 16px;
   padding: 0px 10px;
 }

@@ -24,6 +24,7 @@
   position: relative;
   display: flex;
   gap: 240px;
+  // justify-content: flex-start;
 }
 
 .card-product img {
@@ -78,12 +79,10 @@
 
   .bottom-rent {
 
-
-    gap: 325px;
-
+    // justify-content: flex-start;
 
     .btn {
-      display: flex;
+      // display: flex;
       gap: 8px;
     }
 
@@ -91,7 +90,7 @@
       color: black;
       align-self: baseline;
       font-family: 'Biryani', sans-serif;
-      margin: auto;
+      // justify-content: flex-start;
     }
   }
 }

@@ -10,7 +10,10 @@
     <% Booking.where(renter_id: current_user.id).each do |booking| %>
     <% boardgame = Boardgame.find(booking.boardgame_id) %>
       <div class="card-product">
+      <div>
         <%= cl_image_tag boardgame.photo.key %>
+      </div>
+       <div>
         <div class="card-product-infos">
           <h2><%= boardgame.name %></h2>
           <p>Genre: <%= boardgame.genre %></p>
@@ -20,7 +23,8 @@
                 <% else %>
                   <li class="fa fa-star"> </li>
                 <% end %>
-              <% end %></ul>
+              <% end %>
+          </ul>
         </div>
         <div class="bottom-rent d-flex justify-content-end">
           <p>Rented: <%= booking.rent_from %> - <%= booking.rent_till %></p>
@@ -29,9 +33,11 @@
             <p><%= link_to 'See more', boardgame_path(boardgame), class: "btn btn-light" %></p>
           </div>
         </div>
+        </div>
+
       </div>
      <% end %>
-  </div>
+    </div>
   </div>
 </div>
 
@@ -42,28 +48,30 @@
   <div class="card-body container col-10">
     <% @user.boardgames.each do |boardgame| %>
       <div class="card-product">
-        <%= cl_image_tag boardgame.photo.key %>
-        <div class="card-product-infos">
-          <h2><%= boardgame.name %></h2>
-          <p>Genre: <%= boardgame.genre %></p>
-          <ul class="stars-index"><% 5.times do |x| %>
-            <% if x < boardgame.rating %>
-              <li class="fa fa-star checked"> </li>
-            <% else %>
-              <li class="fa fa-star"> </li>
-            <% end %>
-          <% end %>
-          </ul>
+        <div>
+          <%= cl_image_tag boardgame.photo.key %>
         </div>
-        <div class="bottom-rent d-flex justify-content-end">
-          <div class="btn" >
-            <p><%= link_to "Remove", boardgame_path(boardgame), method: :delete, data: { confirm: "Cancel this booking?" }, class: "btn btn-warning" %></p>
-            <p><%= link_to 'See more', boardgame_path(boardgame), class: "btn btn-light" %></p>
+        <div>
+            <div class="card-product-infos">
+              <h2><%= boardgame.name %></h2>
+              <p>Genre: <%= boardgame.genre %></p>
+              <ul class="stars-index"><% 5.times do |x| %>
+                <% if x < boardgame.rating %>
+                  <li class="fa fa-star checked"> </li>
+                <% else %>
+                  <li class="fa fa-star"> </li>
+                <% end %>
+              <% end %>
+              </ul>
+            </div>
+            <div class="bottom-rent d-flex justify-content-end">
+              <div class="btn" >
+                <p><%= link_to "Remove", boardgame_path(boardgame), method: :delete, data: { confirm: "Cancel this booking?" }, class: "btn btn-warning" %></p>
+                <p><%= link_to 'See more', boardgame_path(boardgame), class: "btn btn-light" %></p>
+              </div>
+            </div>
           </div>
-        </div>
       </div>
      <% end %>
   </div>
-  </div>
-</div>
 </div>

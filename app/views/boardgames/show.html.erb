@@ -1,3 +1,4 @@
+<div class="container mb-25">
 <div class="container">
   <div class="cards">
     <div class="card">
@@ -17,20 +18,24 @@
           <% end %></ul>
         </div>
       </div>
-      <div  class="name-desc">
-        <h2><%= @boardgame.name %></h2>
-        <br>
-        <p><%= @boardgame.description.html_safe %></p>
-        <br>
-        <% if current_user == @boardgame.user %>
-          <button class="btn btn-warning"><%= link_to "Remove #{@boardgame.name}", boardgame_path(@boardgame), style: "text-decoration: none; color: black;", method: :delete, data: { confirm: "Are you sure" } %></button>
-        <% end %>
-        <div class="belongs-to">
-          <h1>This boardgame belongs to: <% if User.find(@boardgame.user_id) == current_user %> You</h1>
+      <div  class="name-desc" style="display: flex; flex-direction: column; justify-content: space-between;">
+        <div>
+          <h2><%= @boardgame.name %></h2>
+          <br>
+            <p><%= @boardgame.description.html_safe %></p>
+            <br>
         </div>
-        <% else %>
-          <%= link_to "#{User.find(@boardgame.user_id).username}", user_path(User.find(@boardgame.user_id)), { style: "text-decoration: none;" } %></h2>
-        <% end %>
+        <div style="display: flex;gap: 10px;justify-content: space-between;">
+          <% if current_user == @boardgame.user %>
+            <button class="btn btn-warning"><%= link_to "Remove #{@boardgame.name}", boardgame_path(@boardgame), style: "text-decoration: none; color: black;", method: :delete, data: { confirm: "Are you sure" } %></button>
+          <% end %>
+          <div class="belongs-to">
+            <h1>This boardgame belongs to: <% if User.find(@boardgame.user_id) == current_user %> You</h1>
+          </div>
+          <% else %>
+            <%= link_to "#{User.find(@boardgame.user_id).username}", user_path(User.find(@boardgame.user_id)), { style: "text-decoration: none;" } %></h2>
+          <% end %>
+        </div>
         </div>
       </div>
     </div>
@@ -38,7 +43,7 @@
 </div>
 
 <% unless current_user == @boardgame.user %>
-  <div class="rent-show container col-6">
+  <div class="rent-show">
     <%= simple_form_for [@boardgame, @booking] do |f| %>
       <div class="d-flex justify-content-center">
         <%= f.input :rent_from, html5: true %>
@@ -52,3 +57,4 @@
     <% end %>
   </div>
 <% end %>
+</div>

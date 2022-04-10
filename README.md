@@ -1,7 +1,7 @@
 Small project - Team of 3. It’s a rent, buy or create board games on the Dungeon of Games website. My input was in most parts of development, but I worked mostly on the frontend, creating visuals for the website.
 
 
-
+https://user-images.githubusercontent.com/93189774/162632039-4d0aeadf-62b6-418c-a7b6-d1b9a436b100.mov
 
 
 Link: http://games-in-the-dungeon.herokuapp.com

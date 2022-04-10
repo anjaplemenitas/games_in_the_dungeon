@@ -1,4 +1,4 @@
-<a href="http://games-in-the-dungeon.herokuapp.com"><h1>Games in the Dungeon</h1></a>
+<a href="games-in-the-dungeon.herokuapp.com"><h1>Games in the Dungeon</h1></a>
 
 <h4>Rent, buy or create board games on the Dungeon of Games website. My input was in most parts of development, but I worked mostly on the frontend, creating visuals for the website.</h4>
 <br>

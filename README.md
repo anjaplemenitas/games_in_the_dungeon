@@ -23,3 +23,28 @@ Link: http://games-in-the-dungeon.herokuapp.com
 <img width="1274" alt="add game" src="https://user-images.githubusercontent.com/93189774/162631260-205b5b29-9878-43a1-b78c-c62ddc70b19a.png">
 
 <img width="1261" alt="profilepage" src="https://user-images.githubusercontent.com/93189774/162631262-9cdb2663-d02a-455e-b9d9-73c387a8d196.png">
+
+
+
+# Getting Started:
+
+## 1. Check out the repository
+```sh
+git clone git@github.com:anjaplemenitas/games_in_the_dungeon.git
+```
+## 2. Installation
+```sh
+bundle install
+```
+## 3. Initialize the database
+```sh
+rails db:create db:migrate db:seed
+```
+## 4. Serve
+```sh
+rails s and land on http://localhost:3000
+```
+
+
+# Enjoy!
+
